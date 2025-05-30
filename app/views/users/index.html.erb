@@ -1,0 +1,14 @@
+<h1>hello from index</h1>
+<% if true %>
+    <%= @users %>
+    
+
+    <h1>All Users</h1>
+
+    <ul>
+    <% @allUsers.each do |user| %>
+        <li><%= user.name %> - <%= user.email %></li>
+    <% end %>
+    </ul>
+
+<% end %>
