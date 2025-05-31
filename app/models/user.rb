@@ -3,3 +3,4 @@ class User < ApplicationRecord
   validates :email, presence: true, email: true, uniqueness: true
   validates :phone_number , presence: true
 end
+
