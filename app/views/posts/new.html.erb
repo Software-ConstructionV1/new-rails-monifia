@@ -1,11 +1,13 @@
-<% content_for :title, "New post" %>
-
-<h1>New post</h1>
-
-<%= render "form", post: @post %>
-
-<br>
-
+<h1>New Post</h1>
+<%= form_with model: @post, local: true do |form| %>
 <div>
-  <%= link_to "Back to posts", posts_path %>
+<%= form.label :title %>
+<%= form.text_field :title %>
 </div>
+<div>
+<%= form.label :content %>
+<%= form.text_area :content %>
+</div>
+<%= form.submit %>
+<% end %>
+<%= link_to 'Back', posts_path %>
