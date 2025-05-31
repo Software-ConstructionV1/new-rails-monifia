@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -13,6 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    
     @post = Post.new(post_params)
     if @post.save
       redirect_to @post, notice: 'Post was successfully created.'
@@ -22,9 +24,11 @@ class PostsController < ApplicationController
   end
 
   def edit
+   set_post
   end
 
   def update
+    set_post
     if @post.update(post_params)
       redirect_to @post, notice: 'Post was successfully updated.'
     else
@@ -33,6 +37,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    set_post
     @post.destroy
     redirect_to posts_path, notice: 'Post was successfully deleted.'
   end
