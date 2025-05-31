@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.new(name: params[:user][:name])
+        @user = User.new(name: params[:user][:name], dob: params[:user][:dob], email: params[:user][:email], phone_number: params[:user][:phone_number], address: params[:user][:address])
         if @user.save
             redirect_to @user, notice: "User Created!"
         else
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        if @user.update(name: params[:user][:name])
+        if @user.update(name: params[:user][:name], dob: params[:user][:dob], email: params[:user][:email], phone_number: params[:user][:phone_number], address: params[:user][:address])
             redirect_to @user, notice: "User Updated!"
         else
             render :edit, status: 422
@@ -36,6 +36,6 @@ class UsersController < ApplicationController
     def destroy
         @user = User.find(params[:id])
         @user.destroy
-        redirect_to @users
+        redirect_to users_path
     end
 end
