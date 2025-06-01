@@ -17,11 +17,15 @@
   </div>
 
   <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_field :content %>
+ lab_four_mvc
+    <%= form.label :body, style: "display: block" %>
+    <%= form.textarea :body %>
   </div>
 
   <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_field :content %>
+
