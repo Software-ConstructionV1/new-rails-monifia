@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_31_110310) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_01_112835) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -18,11 +18,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_31_110310) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "editor_assignments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_editor_assignments_on_post_id"
+    t.index ["user_id"], name: "index_editor_assignments_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "creator_id", null: false
+    t.index ["creator_id"], name: "index_posts_on_creator_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +45,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_31_110310) do
     t.datetime "updated_at", null: false
     t.string "address", null: false
   end
+
+  add_foreign_key "editor_assignments", "posts"
+  add_foreign_key "editor_assignments", "users"
+  add_foreign_key "posts", "users", column: "creator_id"
 end
