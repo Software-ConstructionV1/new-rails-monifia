@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Migration[8.0]
+class CreateUsers < ActiveRecord::Migration[7.1]
   def change
     create_table :users do |t|
       t.string :name
@@ -6,7 +6,9 @@ class CreateUsers < ActiveRecord::Migration[8.0]
       t.string :email
       t.string :phone_number
 
+      t.index :email, unique: true
+
       t.timestamps
-    end
-  end
+ end
+end
 end
