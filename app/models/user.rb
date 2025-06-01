@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  validates :name, :dob, :email, :phone_number, presence: true
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :email, uniqueness: true
+    has_many :created_posts, class_name: 'Post', foreign_key: 'creator_id'
+    has_many :editorships
+    has_many :edited_posts, through: :editorships, source: :post
+
 end
