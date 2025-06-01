@@ -15,6 +15,7 @@ class PostsTest < ApplicationSystemTestCase
     click_on "New post"
 
     fill_in "Title", with: @post.title
+    fill_in "User", with: @post.user_id
     click_on "Create Post"
 
     assert_text "Post was successfully created"
@@ -26,6 +27,7 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Edit this post", match: :first
 
     fill_in "Title", with: @post.title
+    fill_in "User", with: @post.user_id
     click_on "Update Post"
 
     assert_text "Post was successfully updated"
